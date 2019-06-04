@@ -43,19 +43,29 @@ $(document).ready(function() {
         }
     ]
 
-    var questionIndex = 0;
+    var index = 0;
     var questionNumber = 1;
+    var answerClicked = false;
 
     function createTrivia() {
         $(".question-number").text(questionNumber);
         $(".total-questions").text(questionList.length)
-        $(".question").text(questionList[questionIndex].question);
+        $(".question").text(questionList[index].question);
         for (var i = 0; i < 4; i++) {
-            var answerChoices = questionList[questionIndex].choices[i];
+            var answerChoices = questionList[index].choices[i];
             var answerCard = $("<div>").addClass("answer-card").append("<p>" + answerChoices + "</p>");
             $(".answer-container").append(answerCard);
         }
     }
     createTrivia();
+
+    $(".answer-card").on("click", function() {
+        if ($(this).text() === questionList[index].answer && answerClicked == false) {
+            console.log("hi");
+        } else if (answerClicked == false) {
+            console.log("bye");
+        }
+        answerClicked = true;
+    })
 
 })
