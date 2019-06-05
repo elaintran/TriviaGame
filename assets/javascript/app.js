@@ -1,4 +1,14 @@
 $(document).ready(function() {
+    //global variables
+    var index = 0;
+    var questionNumber = 1;
+    var answerClicked = false;
+    var correct = 0;
+    var incorrect = 0;
+    var unanswered = 0;
+    var interval = 25;
+
+    //question and answer object array
     var questionList = [
         {
             question: "question1",
@@ -43,15 +53,6 @@ $(document).ready(function() {
         }
     ]
 
-    //global variables
-    var index = 0;
-    var questionNumber = 1;
-    var answerClicked = false;
-    var correct = 0;
-    var incorrect = 0;
-    var unanswered = 0;
-    var interval = 25;
-
     //need to create the start button
     // $(".start-button").on("click", function() {
     //     $(".start").hide();
@@ -76,6 +77,8 @@ $(document).ready(function() {
         }
         //change answer back to unclicked
         answerClicked = false;
+        //reset interval
+        //start interval function
     }
     createTrivia();
 
