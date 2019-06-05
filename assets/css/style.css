@@ -67,3 +67,13 @@ h3 {
     font-size: 25px;
     font-weight: bold;
 }
+
+.correct {
+    background-color: green;
+    color: white;
+}
+
+.incorrect {
+    background-color: red;
+    color: white;
+}
