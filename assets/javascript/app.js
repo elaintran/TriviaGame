@@ -75,26 +75,36 @@ $(document).ready(function() {
     $(".answer-container").on("click", ".answer-card", function() {
         //picked correct answer
         if ($(this).text() === questionList[index].answer && answerClicked == false) {
-            checkAnswer(correct, this, "correct");
+            //correct counter
+            correct++;
+            checkAnswer(this, "correct");
         //picked incorrect answer
         } else if (answerClicked == false) {
-            checkAnswer(incorrect, this, "incorrect");
+            //incorrect counter
+            incorrect++;
+            checkAnswer(this, "incorrect");
         }
         //prevents from clicking afterwards
         answerClicked = true;
     })
 
-    function checkAnswer(answer, element, addClass) {
+    function checkAnswer(element, addClass) {
         //add 1 to index to set up for next question
         index++;
-        //answer counter
-        answer++;
         //change color according to right or wrong
         $(element).addClass(addClass);
-        if (index != 10) {
+        //if user hasn't reached the end of object array
+        if (index != questionList.length) {
+            //advance to new question
             setTimeout(createTrivia, 1000);
+        //completed trivia
         } else {
+            //display result screen
             result();
         }
+    }
+
+    function result() {
+        $(".quiz-content").hide();
     }
 })
