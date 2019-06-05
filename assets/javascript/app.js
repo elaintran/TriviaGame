@@ -50,6 +50,14 @@ $(document).ready(function() {
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
+    var interval = 25;
+
+    //need to create the start button
+    // $(".start-button").on("click", function() {
+    //     $(".start").hide();
+    //     $(".quiz-content").show();
+    //     createTrivia();
+    // })
 
     function createTrivia() {
         //current question number
@@ -89,10 +97,18 @@ $(document).ready(function() {
     })
 
     function checkAnswer(element, addClass) {
-        //add 1 to index to set up for next question
-        index++;
         //change color according to right or wrong
         $(element).addClass(addClass);
+        advance();
+    }
+
+    //setinterval
+    //if time runs out, unanswered++
+    //advance();
+
+    function advance() {
+        //add 1 to index to set up for next question
+        index++;
         //if user hasn't reached the end of object array
         if (index != questionList.length) {
             //advance to new question
@@ -104,7 +120,8 @@ $(document).ready(function() {
         }
     }
 
+    //list out results
     function result() {
-        $(".quiz-content").hide();
+
     }
 })
