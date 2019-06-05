@@ -52,11 +52,13 @@ h3 {
 
 .answer-card {
     width: calc(50% - 20px);
-    padding: 30px 0;
+    padding: 30px 0px;
     background-color: white;
     color: #1c2b6a;
     margin: 10px;
     border-radius: 5px;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .answer-card:hover {
@@ -64,16 +66,28 @@ h3 {
 }
 
 .answer-card p {
-    font-size: 25px;
+    font-size: 29px;
     font-weight: bold;
 }
 
 .correct {
-    background-color: green;
+    background-color: #00d188;
     color: white;
 }
 
 .incorrect {
-    background-color: red;
+    background-color: #f15859;
     color: white;
+}
+
+.correct i, .incorrect i {
+    position: absolute;
+    font-size: 31px;
+    right: 20px;
+    top: 29px;
+}
+
+.correct-selector {
+    border-radius: 5px solid #00d188;
+    box-shadow: 0 0 0 5px #00d188 inset;
 }

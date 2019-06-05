@@ -11,9 +11,9 @@ $(document).ready(function() {
     //question and answer object array
     var questionList = [
         {
-            question: "question1",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
+            question: "What is the color of the sky?",
+            choices: ["Blue", "Purple", "Green", "Yellow"],
+            answer: "Blue"
         }, {
             question: "question2",
             choices: ["a", "b", "c", "d"],
@@ -73,6 +73,9 @@ $(document).ready(function() {
         for (var i = 0; i < 4; i++) {
             var answerChoices = questionList[index].choices[i];
             var answerCard = $("<div>").addClass("answer-card").append("<p>" + answerChoices + "</p>");
+            // if (answerChoices === questionList[index].answer) {
+            //     answerCard.addClass("right-answer");
+            // }
             $(".answer-container").append(answerCard);
         }
         //change answer back to unclicked
@@ -88,20 +91,23 @@ $(document).ready(function() {
         if ($(this).text() === questionList[index].answer && answerClicked == false) {
             //correct counter
             correct++;
-            checkAnswer(this, "correct");
+            checkAnswer(this, "correct", "<i class='fas fa-check-circle'></i>");
         //picked incorrect answer
         } else if (answerClicked == false) {
             //incorrect counter
             incorrect++;
-            checkAnswer(this, "incorrect");
+            checkAnswer(this, "incorrect", "<i class='fas fa-times-circle'></i>");
         }
         //prevents from clicking afterwards
         answerClicked = true;
+        console.log(this);
     })
 
-    function checkAnswer(element, addClass) {
+    function checkAnswer(element, addClass, newElement) {
         //change color according to right or wrong
         $(element).addClass(addClass);
+        //add right or wrong icon
+        $(element).append(newElement);
         advance();
     }
 
@@ -114,8 +120,10 @@ $(document).ready(function() {
         index++;
         //if user hasn't reached the end of object array
         if (index != questionList.length) {
+            //next question number
+            questionNumber++;
             //advance to new question
-            setTimeout(createTrivia, 1000);
+            setTimeout(createTrivia, 5000);
         //completed trivia
         } else {
             //display result screen
