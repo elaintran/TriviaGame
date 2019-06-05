@@ -43,11 +43,13 @@ $(document).ready(function() {
         }
     ]
 
+    //global variables
     var index = 0;
     var questionNumber = 1;
     var answerClicked = false;
     var correct = 0;
     var incorrect = 0;
+    var unanswered = 0;
 
     function createTrivia() {
         //current question number
@@ -64,11 +66,13 @@ $(document).ready(function() {
             var answerCard = $("<div>").addClass("answer-card").append("<p>" + answerChoices + "</p>");
             $(".answer-container").append(answerCard);
         }
+        //change answer back to unclicked
+        answerClicked = false;
     }
     createTrivia();
 
     //click on answer
-    $(".answer-card").on("click", function() {
+    $(".answer-container").on("click", ".answer-card", function() {
         //picked correct answer
         if ($(this).text() === questionList[index].answer && answerClicked == false) {
             checkAnswer(correct, this, "correct");
@@ -81,9 +85,16 @@ $(document).ready(function() {
     })
 
     function checkAnswer(answer, element, addClass) {
+        //add 1 to index to set up for next question
+        index++;
         //answer counter
         answer++;
         //change color according to right or wrong
         $(element).addClass(addClass);
+        if (index != 10) {
+            setTimeout(createTrivia, 1000);
+        } else {
+            result();
+        }
     }
 })
