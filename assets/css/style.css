@@ -1,6 +1,10 @@
 body {
-    background: linear-gradient(to top, #1c2b6a 0%, #252c4a 100%);
-    /* background-color: #1c2b6a; */
+    background-color: #252c4a;
+    /* background: linear-gradient(to top, #1c2b6a 0%, #252c4a 100%); */
+    /* background-image: radial-gradient(#fec935 20%, transparent 0%),
+                      radial-gradient(#fec935 20%, transparent 0%);
+    background-position: 0 0, 30px 30px;
+    background-size: 60px 60px; */
     font-family: "Work Sans", sans-serif;
     color: white;
 }
@@ -54,7 +58,7 @@ h3 {
     width: calc(50% - 20px);
     padding: 30px 0px;
     background-color: white;
-    color: #1c2b6a;
+    color: #393939;
     margin: 10px;
     border-radius: 5px;
     box-sizing: border-box;
@@ -71,12 +75,12 @@ h3 {
 }
 
 .correct {
-    background-color: #00d188;
+    background-color: #32d29a;
     color: white;
 }
 
 .incorrect {
-    background-color: #f15859;
+    background-color: #ff6667;
     color: white;
 }
 

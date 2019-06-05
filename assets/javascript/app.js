@@ -6,7 +6,9 @@ $(document).ready(function() {
     var correct = 0;
     var incorrect = 0;
     var unanswered = 0;
-    var interval = 25;
+    var time = 25;
+    var interval;
+    var running = false;
 
     //question and answer object array
     var questionList = [
@@ -73,15 +75,14 @@ $(document).ready(function() {
         for (var i = 0; i < 4; i++) {
             var answerChoices = questionList[index].choices[i];
             var answerCard = $("<div>").addClass("answer-card").append("<p>" + answerChoices + "</p>");
-            // if (answerChoices === questionList[index].answer) {
-            //     answerCard.addClass("right-answer");
-            // }
             $(".answer-container").append(answerCard);
         }
         //change answer back to unclicked
         answerClicked = false;
-        //reset interval
+        //reset countdown
+        resetCountdown();
         //start interval function
+        startCountdown();
     }
     createTrivia();
 
@@ -108,22 +109,21 @@ $(document).ready(function() {
         $(element).addClass(addClass);
         //add right or wrong icon
         $(element).append(newElement);
+        stopCountdown();
         advance();
     }
-
-    //setinterval
-    //if time runs out, unanswered++
-    //advance();
 
     function advance() {
         //add 1 to index to set up for next question
         index++;
+        //reset time back to normal
+        time = 25;
         //if user hasn't reached the end of object array
         if (index != questionList.length) {
             //next question number
             questionNumber++;
             //advance to new question
-            setTimeout(createTrivia, 5000);
+            setTimeout(createTrivia, 1000);
         //completed trivia
         } else {
             //display result screen
@@ -134,5 +134,44 @@ $(document).ready(function() {
     //list out results
     function result() {
 
+    }
+
+    function setTimer() {
+        //subtract one every time timer goes down
+        time--;
+        //timer display for 2 digit number
+        var timeDisplay = "00:" + time;
+        if (time < 10) {
+            //timer display for 1 digit number
+            timeDisplay = "00:0" + time;
+        }
+        //timer reaches zero or less
+        if (time <= 0) {
+            //stop timer
+            stopCountdown();
+            //unanswered counter
+            unanswered++;
+            //move onto next question
+            advance();
+        }
+        //update timer display
+        $(".time").text(timeDisplay);
+    }
+
+    function startCountdown() {
+        if (!running) {
+            interval = setInterval(setTimer, 1000);
+            running = true;
+        }
+    }
+
+    function stopCountdown() {
+        clearInterval(interval);
+        running = false;
+    }
+
+    function resetCountdown() {
+        time = 25;
+        $(".time").text("00:25");
     }
 })
