@@ -143,14 +143,19 @@ $(document).ready(function() {
             setTimeout(createTrivia, 1000);
         //completed trivia
         } else {
-            //display result screen
-            result();
+            //delay to see answer and then display result screen
+            setTimeout(result, 1000);
         }
     }
 
     //list out results
     function result() {
-
+        $(".quiz-content").hide();
+        $(".results").show();
+        var totalCorrect = $("<div>").addClass("total-correct").append("<p>Correct</p><p>" + correct + "</p>");
+        var totalIncorrect = $("<div>").addClass("total-incorrect").append("<p>Incorrect</p><p>" + incorrect + "</p>");
+        var totalUnanswered = $("<div>").addClass("total-unanswered").append("<p>Unanswered</p><p>" + unanswered + "</p>");
+        $(".result").append(totalCorrect).append(totalIncorrect).append(totalUnanswered);
     }
 
     function setTimer() {
