@@ -1,60 +1,60 @@
+//global variables
+var index = 0;
+var questionNumber = 1;
+var answerClicked = false;
+var correct = 0;
+var incorrect = 0;
+var unanswered = 0;
+var time = 25;
+var interval;
+var running = false;
+
+//question and answer object array
+var questionList = [
+    {
+        question: "What is the color of the sky?",
+        choices: ["Blue", "Purple", "Green", "Yellow"],
+        answer: "Blue"
+    }, {
+        question: "question2",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }, {
+        question: "question3",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }, {
+        question: "question4",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }, {
+        question: "question5",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }, {
+        question: "question6",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }, {
+        question: "question7",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }, {
+        question: "question8",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }, {
+        question: "question9",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }, {
+        question: "question10",
+        choices: ["a", "b", "c", "d"],
+        answer: "a"
+    }
+]
+
 $(document).ready(function() {
-    //global variables
-    var index = 0;
-    var questionNumber = 1;
-    var answerClicked = false;
-    var correct = 0;
-    var incorrect = 0;
-    var unanswered = 0;
-    var time = 25;
-    var interval;
-    var running = false;
-
-    //question and answer object array
-    var questionList = [
-        {
-            question: "What is the color of the sky?",
-            choices: ["Blue", "Purple", "Green", "Yellow"],
-            answer: "Blue"
-        }, {
-            question: "question2",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }, {
-            question: "question3",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }, {
-            question: "question4",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }, {
-            question: "question5",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }, {
-            question: "question6",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }, {
-            question: "question7",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }, {
-            question: "question8",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }, {
-            question: "question9",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }, {
-            question: "question10",
-            choices: ["a", "b", "c", "d"],
-            answer: "a"
-        }
-    ]
-
     //need to create the start button
     // $(".start-button").on("click", function() {
     //     $(".start").hide();
@@ -101,18 +101,19 @@ $(document).ready(function() {
         }
         //prevents from clicking afterwards
         answerClicked = true;
-        console.log(this);
     })
 
-    function checkAnswer(element, addClass, newElement) {
+    //if correct, show correct answer; if incorrect, show incorrect answer
+    function checkAnswer(element, addClass, answerIcon) {
         //change color according to right or wrong
         $(element).addClass(addClass);
         //add right or wrong icon
-        $(element).append(newElement);
+        $(element).append(answerIcon);
         stopCountdown();
         advance();
     }
 
+    //set up and move on to next question or result
     function advance() {
         //add 1 to index to set up for next question
         index++;
@@ -122,7 +123,7 @@ $(document).ready(function() {
         if (index != questionList.length) {
             //next question number
             questionNumber++;
-            //advance to new question
+            //delay to see answer and advance to new question
             setTimeout(createTrivia, 1000);
         //completed trivia
         } else {
@@ -151,27 +152,34 @@ $(document).ready(function() {
             stopCountdown();
             //unanswered counter
             unanswered++;
-            //move onto next question
-            advance();
+            //delay to see answer and move onto next question
+            setTimeout(advance, 5000);
         }
         //update timer display
         $(".time").text(timeDisplay);
     }
 
     function startCountdown() {
+        //if not running
         if (!running) {
+            //25 sec timer start
             interval = setInterval(setTimer, 1000);
+            //prevents from setting interval multiple times
             running = true;
         }
     }
 
     function stopCountdown() {
+        //timer stop
         clearInterval(interval);
+        //allows interval to start again
         running = false;
     }
 
     function resetCountdown() {
+        //timer reset
         time = 25;
+        //change back to original text
         $(".time").text("00:25");
     }
 })
