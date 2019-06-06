@@ -7,7 +7,6 @@ var incorrect = 0;
 var unanswered = 0;
 var time = 25;
 var interval;
-var running = false;
 
 //question and answer object array
 var questionList = [
@@ -141,7 +140,7 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            setTimeout(createTrivia, 5000);
+            setTimeout(createTrivia, 1000);
         //completed trivia
         } else {
             //display result screen
@@ -177,20 +176,13 @@ $(document).ready(function() {
     }
 
     function startCountdown() {
-        //if not running
-        if (!running) {
-            //25 sec timer start
-            interval = setInterval(setTimer, 1000);
-            //prevents from setting interval multiple times
-            running = true;
-        }
+        //25 sec timer start
+        interval = setInterval(setTimer, 1000);
     }
 
     function stopCountdown() {
         //timer stop
         clearInterval(interval);
-        //allows interval to start again
-        running = false;
     }
 
     function resetCountdown() {
