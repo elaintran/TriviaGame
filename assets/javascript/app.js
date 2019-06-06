@@ -7,9 +7,11 @@ var incorrect = 0;
 var unanswered = 0;
 var time = 25;
 var interval;
+//font awesome icons
 var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
 var correctIcon = "<i class='fas fa-check-circle'></i>";
 var incorrectIcon = "<i class='fas fa-times-circle'></i>";
+var awardIcon = "<i class='fas fa-trophy'></i>";
 //variables for results
 var correctContainer;
 var incorrectContainer;
@@ -183,17 +185,21 @@ $(document).ready(function() {
     function result() {
         $(".quiz-content").hide();
         $(".results").show();
+        var congrats = "<h2>Congratulations!</h2>";
+        var congratsElement = $("<div>").addClass("congrats").append(awardIcon).append(congrats);
+        $(".result").prepend(congratsElement);
         resultElements(correctContainer, "total-correct", correct, "Correct", totalCorrect);
         resultElements(incorrectContainer, "total-incorrect", incorrect, "Incorrect", totalIncorrect);
         resultElements(unansweredContainer, "total-unanswered", unanswered, "Unanswered", totalUnanswered);
     }
+    //result();
 
     //created element constructor for results
-    function resultElements(container, resultClass, resultNumber, resultTitle, newElement) {
+    function resultElements(element, resultClass, resultNumber, resultTitle, newElement) {
         //show numbers for correct, incorrect, and unanswered
-        container = $("<div>").addClass(resultClass).append("<h2>" + resultNumber + "</h2><h4>" + resultTitle + "</h4>");
-        newElement = $("<div>").addClass("total").append(container);
-        $(".result").append(newElement);
+        element = $("<div>").addClass(resultClass).append("<h2>" + resultNumber + "</h2><h4>" + resultTitle + "</h4>");
+        newElement = $("<div>").addClass("total").append(element);
+        $(".final-results").append(newElement);
     }
 
     function setTimer() {

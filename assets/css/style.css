@@ -118,19 +118,33 @@ h4 {
 }
 
 .result {
-    display: flex;
     text-align: center;
+}
+
+.congrats i {
+    font-size: 107px;
+    color: #fdca35;
+}
+
+.congrats h2 {
+    margin: 24px;
+}
+
+.final-results {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .total {
     margin: 0 7px;
     background-color: rgba(31,33,53,0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
     border-radius: 17px;
     width: 174px;
     height: 135px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .total h2 {
