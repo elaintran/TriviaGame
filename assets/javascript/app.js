@@ -97,6 +97,9 @@ $(document).ready(function() {
 
     //click on answer
     $(".answer-container").on("click", ".answer-card", function() {
+        //prevents from clicking afterwards
+        answerClicked = true;
+        //append fun fact
         var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
         var funFact = "<p>" + questionList[index].funFact + "</p>";
         //create fun fact element first since checkAnswer() adds an index
@@ -114,9 +117,6 @@ $(document).ready(function() {
             incorrect++;
             checkAnswer(this, "incorrect", "<i class='fas fa-times-circle'></i>");
         }
-        //prevents from clicking afterwards
-        answerClicked = true;
-        //append fun fact
     })
 
     //if correct, show correct answer; if incorrect, show incorrect answer
