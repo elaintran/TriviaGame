@@ -20,39 +20,47 @@ var questionList = [
         question: "Which country produces the second most coffee in one year?",
         choices: ["Vietnam", "Columbia", "India", "Brazil"],
         answer: "Vietnam",
-        funFact: "Vietnam produces the 2nd most coffee in the world at 1.98 billion lbs./year, whereas Brazil produces about 5.61 billion lbs./year."
+        funFact: "Vietnam produces the 2nd most coffee in the world at 1.98 billion lbs/year, whereas Brazil produces the most at 5.61 billion lbs/year."
     }, {
-        question: "question3",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "Which month is National Grilled Cheese month?",
+        choices: ["January", "February", "March", "April"],
+        answer: "April",
+        funFact: "Each April, San Francisco holds a Grilled Cheese Invitational grilled cheese cooking contest to commemorate it."
     }, {
-        question: "question4",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "What country is slurping not considered rude?",
+        choices: ["Japan", "England", "India", "Austria"],
+        answer: "Japan",
+        funFact: "It is said that Japanese people slurp because it is considered evidence of enjoying the meal and it enhances the flavor."
     }, {
-        question: "question5",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "What is the offical state fruit of Texas?",
+        choices: ["Plum", "Apricot", "Grapefruit", "Peach"],
+        answer: "Grapefruit",
+        funFact: "The Texas Red Grapefruit, first discovered by Texas citrus growers in 1929, was adopted as the Texas state fruit on May 17, 1993."
     }, {
-        question: "question6",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "Which one of these food ingredients will never spoil?",
+        choices: ["Basil", "Cumin", "Paprika", "Honey"],
+        answer: "Honey",
+        funFact: "Due to its relatively-low levels of moisture and high levels of acidity, bacteria and microorganisms have a hard time making a permanent home out of honey."
     }, {
-        question: "question7",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "In what year was the McDonald's Happy Meal created?",
+        choices: ["1968", "1977", "1980", "1995"],
+        answer: "1977",
+        funFact: "The Happy Meal, designed specifically for children, was originally fielded in 1977 and ultimately released nationwide in 1979."
     }, {
-        question: "question8",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "What type of pasta is shaped like bow ties?",
+        choices: ["Farfalle", "Conchiglie", "Gnocchi", "Penne"],
+        answer: "Farfalle",
+        funFact: "The word farfalle means butterflies in Italian and is commonly referred to as bow tie pasta because of its shape."
     }, {
-        question: "question9",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "Egg tarts originated from which country?",
+        choices: ["China", "Portugal", "Korea", "France"],
+        answer: "Portugal",
+        funFact: "Hong Kong received the pastel de nata egg tart from Macau, which was a colony of Portugal, and combined aspects of the Portuguese tart with their own."
     }, {
-        question: "question10",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "Which European country is credited for the invention of hot dogs?",
+        choices: ["Italy", "England", "Denmark", "Germany"],
+        answer: "Germany",
+        funFact: ""
     }
 ]
 
@@ -133,7 +141,7 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            //setTimeout(createTrivia, 5000);
+            setTimeout(createTrivia, 5000);
         //completed trivia
         } else {
             //display result screen

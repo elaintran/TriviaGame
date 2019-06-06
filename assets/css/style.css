@@ -5,13 +5,14 @@ body {
 }
 
 h2 {
-    font-size: 38px;
+    font-size: 33px;
     font-weight: 600;
+    line-height: 1.2;
 }
 
 h3 {
     font-size: 25px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .quiz-container {
@@ -67,7 +68,7 @@ h3 {
 
 .answer-card p {
     font-size: 29px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .correct {
@@ -80,7 +81,7 @@ h3 {
     color: white;
 }
 
-.correct i, .incorrect i {
+.answer-card i {
     position: absolute;
     font-size: 31px;
     right: 20px;
@@ -111,4 +112,34 @@ h3 {
     text-align: left;
     font-size: 14px;
     line-height: 1.2;
+}
+
+@media screen and (max-width: 624px) {
+    h2 {
+        font-size: 30px;
+    }
+    h3 {
+        font-size: 23px;
+    }
+    .quiz-content {
+        width: 85%;
+    }
+    .question {
+        margin-top: 23px;
+    }
+    .answer-card {
+        /* width: 100%; */
+        /* padding: 15px 0px; */
+        margin: 6px 10px;
+    }
+    .answer-card p {
+        font-size: 25px;
+    }
+    .answer-card i {
+        right: 15px;
+    }
+    .fun-fact p {
+        font-size: 12px;
+        line-height: 1.3;
+    }
 }
