@@ -7,6 +7,8 @@ var incorrect = 0;
 var unanswered = 0;
 var time = 25;
 var interval;
+var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
+var answerIcon = "<i class='fas fa-check-circle'></i>";
 //variables for results
 var correctContainer;
 var incorrectContainer;
@@ -104,19 +106,11 @@ $(document).ready(function() {
 
     //click on answer
     $(".answer-container").on("click", ".answer-card", function() {
-        var correctAnswer = questionList[index].answer;
-        //console.log(questionList[index].answer);
-        //append fun fact
         if (answerClicked == false) {
-            var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
-            var answerIcon = "<i class='fas fa-check-circle'></i>";
-            var funFact = "<p>" + questionList[index].funFact + "</p>";
-            //create fun fact element first since checkAnswer() adds an index
-            var funFactElement = $("<div>").addClass("fun-fact").append(exclaimationIcon).append(funFact);
-            //attach to bottom of answer container
-            $(".answer-container").append(funFactElement);
+            //show fun fact
+            createFunFact();
             //picked correct answer
-            if ($(this).text() === correctAnswer && answerClicked == false) {
+            if ($(this).text() === questionList[index].answer && answerClicked == false) {
                 //correct counter
                 correct++;
                 //highlight correct answer
@@ -125,12 +119,8 @@ $(document).ready(function() {
             } else {
                 //incorrect counter
                 incorrect++;
-                //search through all divs to find correct answer and show correct answer
-                $("div").each(function() {
-                    if ($(this).text() === correctAnswer) {
-                        $(this).addClass("correct").append(answerIcon);
-                    }
-                })
+                //show correct answer
+                searchCorrect();
                 //highlight incorrect answer
                 checkAnswer(this, "incorrect", "<i class='fas fa-times-circle'></i>");
             }
@@ -149,6 +139,24 @@ $(document).ready(function() {
         advance();
     }
 
+    //search through all divs to find correct answer and show correct answer
+    function searchCorrect() {
+        $("div").each(function() {
+            if ($(this).text() === questionList[index].answer) {
+                $(this).addClass("correct").append(answerIcon);
+            }
+        })
+    }
+    
+    function createFunFact() {
+        //$(".fun-fact").remove();
+        var funFact = "<p>" + questionList[index].funFact + "</p>";
+        //create fun fact element first since checkAnswer() adds an index
+        var funFactElement = $("<div>").addClass("fun-fact").append(exclaimationIcon).append(funFact);
+        //attach to bottom of answer container
+        $(".answer-container").append(funFactElement);
+    }
+
     //set up and move on to next question or result
     function advance() {
         //add 1 to index to set up for next question
@@ -160,7 +168,7 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            //setTimeout(createTrivia, 5000);
+            setTimeout(createTrivia, 5000);
         //completed trivia
         } else {
             //delay to see answer and then display result screen
@@ -199,8 +207,10 @@ $(document).ready(function() {
             stopCountdown();
             //unanswered counter
             unanswered++;
-            //need to show correct answer
-            //need to show fact
+            //shows correct answer
+            searchCorrect();
+            //shows fun fact
+            createFunFact();
             //delay to see answer and move onto next question
             setTimeout(advance, 5000);
         }
