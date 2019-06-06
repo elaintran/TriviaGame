@@ -77,11 +77,11 @@ var questionList = [
 
 $(document).ready(function() {
     //need to create the start button
-    // $(".start-button").on("click", function() {
-    //     $(".start").hide();
-    //     $(".quiz-content").show();
-    //     createTrivia();
-    // })
+    $(".start-button").on("click", function() {
+        $(".start").hide();
+        $(".quiz-content").show();
+        createTrivia();
+    })
 
     function createTrivia() {
         //current question number
@@ -105,7 +105,7 @@ $(document).ready(function() {
         //start interval function
         startCountdown();
     }
-    createTrivia();
+    //createTrivia();
 
     //click on answer
     $(".answer-container").on("click", ".answer-card", function() {
