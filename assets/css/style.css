@@ -2,17 +2,20 @@ body {
     background-color: #252c4a;
     font-family: "Open Sans", sans-serif;
     color: white;
+    font-weight: 600;
 }
 
 h2 {
     font-size: 33px;
-    font-weight: 600;
     line-height: 1.2;
 }
 
 h3 {
     font-size: 25px;
-    font-weight: 600;
+}
+
+h4 {
+    font-size: 20px;
 }
 
 .quiz-container {
@@ -68,7 +71,6 @@ h3 {
 
 .answer-card p {
     font-size: 29px;
-    font-weight: 600;
 }
 
 .correct {
@@ -116,6 +118,15 @@ h3 {
 
 .result {
     display: flex;
+    text-align: center;
+}
+
+.result .total {
+    margin: 0 20px;
+    background-color: rgba(31,33,53,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 @media screen and (max-width: 624px) {

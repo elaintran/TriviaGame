@@ -7,6 +7,12 @@ var incorrect = 0;
 var unanswered = 0;
 var time = 25;
 var interval;
+var correctContainer;
+var incorrectContainer;
+var unansweredContainer;
+var totalCorrect;
+var totalIncorrect;
+var totalUnanswered;
 
 //question and answer object array
 var questionList = [
@@ -93,7 +99,7 @@ $(document).ready(function() {
         //start interval function
         //startCountdown();
     }
-    createTrivia();
+    //createTrivia();
 
     //click on answer
     $(".answer-container").on("click", ".answer-card", function() {
@@ -154,10 +160,16 @@ $(document).ready(function() {
     function result() {
         $(".quiz-content").hide();
         $(".results").show();
-        var totalCorrect = $("<div>").addClass("total-correct").append("<p>Correct</p><p>" + correct + "</p>");
-        var totalIncorrect = $("<div>").addClass("total-incorrect").append("<p>Incorrect</p><p>" + incorrect + "</p>");
-        var totalUnanswered = $("<div>").addClass("total-unanswered").append("<p>Unanswered</p><p>" + unanswered + "</p>");
-        $(".result").append(totalCorrect).append(totalIncorrect).append(totalUnanswered);
+        console.log(resultElements(correctContainer, "total-correct", correct, "Correct", totalCorrect));
+        resultElements(incorrectContainer, "total-incorrect", incorrect, "Incorrect", totalIncorrect);
+        resultElements(unansweredContainer, "total-unanswered", unanswered, "Unanswered", totalUnanswered);
+    }
+    result();
+
+    function resultElements(container, resultClass, resultType, resultTitle, newElement) {
+        container = $("<div>").addClass(resultClass).append("<h2>" + resultType + "</h2><h4>" + resultTitle + "</h4>");
+        newElement = $("<div>").addClass("total").append(container);
+        $(".result").append(newElement);
     }
 
     function setTimer() {
