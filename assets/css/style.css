@@ -114,6 +114,10 @@ h3 {
     line-height: 1.2;
 }
 
+.result {
+    display: flex;
+}
+
 @media screen and (max-width: 624px) {
     h2 {
         font-size: 30px;

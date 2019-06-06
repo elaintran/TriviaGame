@@ -103,19 +103,19 @@ $(document).ready(function() {
             var funFact = "<p>" + questionList[index].funFact + "</p>";
             //create fun fact element first since checkAnswer() adds an index
             var funFactElement = $("<div>").addClass("fun-fact").append(exclaimationIcon).append(funFact);
-        }
-        //attach to bottom of answer container
-        $(".answer-container").append(funFactElement);
-        //picked correct answer
-        if ($(this).text() === questionList[index].answer && answerClicked == false) {
-            //correct counter
-            correct++;
-            checkAnswer(this, "correct", "<i class='fas fa-check-circle'></i>");
-        //picked incorrect answer
-        } else if (answerClicked == false) {
-            //incorrect counter
-            incorrect++;
-            checkAnswer(this, "incorrect", "<i class='fas fa-times-circle'></i>");
+            //attach to bottom of answer container
+            $(".answer-container").append(funFactElement);
+            //picked correct answer
+            if ($(this).text() === questionList[index].answer && answerClicked == false) {
+                //correct counter
+                correct++;
+                checkAnswer(this, "correct", "<i class='fas fa-check-circle'></i>");
+            //picked incorrect answer
+            } else {
+                //incorrect counter
+                incorrect++;
+                checkAnswer(this, "incorrect", "<i class='fas fa-times-circle'></i>");
+            }
         }
         //prevents from clicking afterwards
         answerClicked = true;
