@@ -7,6 +7,7 @@ var incorrect = 0;
 var unanswered = 0;
 var time = 25;
 var interval;
+//variables for results
 var correctContainer;
 var incorrectContainer;
 var unansweredContainer;
@@ -97,29 +98,40 @@ $(document).ready(function() {
         //reset countdown
         resetCountdown();
         //start interval function
-        //startCountdown();
+        startCountdown();
     }
-    //createTrivia();
+    createTrivia();
 
     //click on answer
     $(".answer-container").on("click", ".answer-card", function() {
+        var correctAnswer = questionList[index].answer;
+        //console.log(questionList[index].answer);
         //append fun fact
         if (answerClicked == false) {
             var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
+            var answerIcon = "<i class='fas fa-check-circle'></i>";
             var funFact = "<p>" + questionList[index].funFact + "</p>";
             //create fun fact element first since checkAnswer() adds an index
             var funFactElement = $("<div>").addClass("fun-fact").append(exclaimationIcon).append(funFact);
             //attach to bottom of answer container
             $(".answer-container").append(funFactElement);
             //picked correct answer
-            if ($(this).text() === questionList[index].answer && answerClicked == false) {
+            if ($(this).text() === correctAnswer && answerClicked == false) {
                 //correct counter
                 correct++;
-                checkAnswer(this, "correct", "<i class='fas fa-check-circle'></i>");
+                //highlight correct answer
+                checkAnswer(this, "correct", answerIcon);
             //picked incorrect answer
             } else {
                 //incorrect counter
                 incorrect++;
+                //search through all divs to find correct answer and show correct answer
+                $("div").each(function() {
+                    if ($(this).text() === correctAnswer) {
+                        $(this).addClass("correct").append(answerIcon);
+                    }
+                })
+                //highlight incorrect answer
                 checkAnswer(this, "incorrect", "<i class='fas fa-times-circle'></i>");
             }
         }
@@ -148,11 +160,11 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            setTimeout(createTrivia, 1000);
+            //setTimeout(createTrivia, 5000);
         //completed trivia
         } else {
             //delay to see answer and then display result screen
-            setTimeout(result, 1000);
+            setTimeout(result, 5000);
         }
     }
 
@@ -160,14 +172,14 @@ $(document).ready(function() {
     function result() {
         $(".quiz-content").hide();
         $(".results").show();
-        console.log(resultElements(correctContainer, "total-correct", correct, "Correct", totalCorrect));
+        resultElements(correctContainer, "total-correct", correct, "Correct", totalCorrect);
         resultElements(incorrectContainer, "total-incorrect", incorrect, "Incorrect", totalIncorrect);
         resultElements(unansweredContainer, "total-unanswered", unanswered, "Unanswered", totalUnanswered);
     }
-    result();
+    //result();
 
-    function resultElements(container, resultClass, resultType, resultTitle, newElement) {
-        container = $("<div>").addClass(resultClass).append("<h2>" + resultType + "</h2><h4>" + resultTitle + "</h4>");
+    function resultElements(container, resultClass, resultNumber, resultTitle, newElement) {
+        container = $("<div>").addClass(resultClass).append("<h2>" + resultNumber + "</h2><h4>" + resultTitle + "</h4>");
         newElement = $("<div>").addClass("total").append(container);
         $(".result").append(newElement);
     }
@@ -187,6 +199,8 @@ $(document).ready(function() {
             stopCountdown();
             //unanswered counter
             unanswered++;
+            //need to show correct answer
+            //need to show fact
             //delay to see answer and move onto next question
             setTimeout(advance, 5000);
         }
