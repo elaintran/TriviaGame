@@ -12,13 +12,15 @@ var running = false;
 //question and answer object array
 var questionList = [
     {
-        question: "What is the color of the sky?",
-        choices: ["Blue", "Purple", "Green", "Yellow"],
-        answer: "Blue"
+        question: "Where did French fries originate from?",
+        choices: ["France", "Belgium", "USA", "Italy"],
+        answer: "Belgium",
+        funFact: "The origins of the French fry have been traced back to Belgium, where historians claim potatoes were being fried in the late-1600s."
     }, {
-        question: "question2",
-        choices: ["a", "b", "c", "d"],
-        answer: "a"
+        question: "Which country produces the second most coffee in one year?",
+        choices: ["Vietnam", "Columbia", "India", "Brazil"],
+        answer: "Vietnam",
+        funFact: "Vietnam produces the 2nd most coffee in the world at 1.98 billion lbs./year, whereas Brazil produces about 5.61 billion lbs./year."
     }, {
         question: "question3",
         choices: ["a", "b", "c", "d"],
@@ -82,12 +84,18 @@ $(document).ready(function() {
         //reset countdown
         resetCountdown();
         //start interval function
-        startCountdown();
+        //startCountdown();
     }
     createTrivia();
 
     //click on answer
     $(".answer-container").on("click", ".answer-card", function() {
+        var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
+        var funFact = "<p>" + questionList[index].funFact + "</p>";
+        //create fun fact element first since checkAnswer() adds an index
+        var funFactElement = $("<div>").addClass("fun-fact").append(exclaimationIcon).append(funFact);
+        //attach to bottom of answer container
+        $(".answer-container").append(funFactElement);
         //picked correct answer
         if ($(this).text() === questionList[index].answer && answerClicked == false) {
             //correct counter
@@ -101,6 +109,7 @@ $(document).ready(function() {
         }
         //prevents from clicking afterwards
         answerClicked = true;
+        //append fun fact
     })
 
     //if correct, show correct answer; if incorrect, show incorrect answer
@@ -124,7 +133,7 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            setTimeout(createTrivia, 1000);
+            //setTimeout(createTrivia, 5000);
         //completed trivia
         } else {
             //display result screen
