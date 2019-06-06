@@ -97,13 +97,13 @@ $(document).ready(function() {
 
     //click on answer
     $(".answer-container").on("click", ".answer-card", function() {
-        //prevents from clicking afterwards
-        answerClicked = true;
         //append fun fact
-        var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
-        var funFact = "<p>" + questionList[index].funFact + "</p>";
-        //create fun fact element first since checkAnswer() adds an index
-        var funFactElement = $("<div>").addClass("fun-fact").append(exclaimationIcon).append(funFact);
+        if (answerClicked == false) {
+            var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
+            var funFact = "<p>" + questionList[index].funFact + "</p>";
+            //create fun fact element first since checkAnswer() adds an index
+            var funFactElement = $("<div>").addClass("fun-fact").append(exclaimationIcon).append(funFact);
+        }
         //attach to bottom of answer container
         $(".answer-container").append(funFactElement);
         //picked correct answer
@@ -117,6 +117,8 @@ $(document).ready(function() {
             incorrect++;
             checkAnswer(this, "incorrect", "<i class='fas fa-times-circle'></i>");
         }
+        //prevents from clicking afterwards
+        answerClicked = true;
     })
 
     //if correct, show correct answer; if incorrect, show incorrect answer
