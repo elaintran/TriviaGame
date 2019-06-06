@@ -8,7 +8,8 @@ var unanswered = 0;
 var time = 25;
 var interval;
 var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
-var answerIcon = "<i class='fas fa-check-circle'></i>";
+var correctIcon = "<i class='fas fa-check-circle'></i>";
+var incorrectIcon = "<i class='fas fa-times-circle'></i>";
 //variables for results
 var correctContainer;
 var incorrectContainer;
@@ -114,7 +115,7 @@ $(document).ready(function() {
                 //correct counter
                 correct++;
                 //highlight correct answer
-                checkAnswer(this, "correct", answerIcon);
+                checkAnswer(this, "correct", correctIcon);
             //picked incorrect answer
             } else {
                 //incorrect counter
@@ -122,7 +123,7 @@ $(document).ready(function() {
                 //show correct answer
                 searchCorrect();
                 //highlight incorrect answer
-                checkAnswer(this, "incorrect", "<i class='fas fa-times-circle'></i>");
+                checkAnswer(this, "incorrect", incorrectIcon);
             }
         }
         //prevents from clicking afterwards
@@ -135,7 +136,9 @@ $(document).ready(function() {
         $(element).addClass(addClass);
         //add right or wrong icon
         $(element).append(answerIcon);
+        //stop timer
         stopCountdown();
+        //next question
         advance();
     }
 
@@ -143,7 +146,7 @@ $(document).ready(function() {
     function searchCorrect() {
         $("div").each(function() {
             if ($(this).text() === questionList[index].answer) {
-                $(this).addClass("correct").append(answerIcon);
+                $(this).addClass("correct").append(correctIcon);
             }
         })
     }
@@ -176,7 +179,7 @@ $(document).ready(function() {
         }
     }
 
-    //list out results
+    //show result screen
     function result() {
         $(".quiz-content").hide();
         $(".results").show();
@@ -184,9 +187,10 @@ $(document).ready(function() {
         resultElements(incorrectContainer, "total-incorrect", incorrect, "Incorrect", totalIncorrect);
         resultElements(unansweredContainer, "total-unanswered", unanswered, "Unanswered", totalUnanswered);
     }
-    //result();
 
+    //created element constructor for results
     function resultElements(container, resultClass, resultNumber, resultTitle, newElement) {
+        //show numbers for correct, incorrect, and unanswered
         container = $("<div>").addClass(resultClass).append("<h2>" + resultNumber + "</h2><h4>" + resultTitle + "</h4>");
         newElement = $("<div>").addClass("total").append(container);
         $(".result").append(newElement);
