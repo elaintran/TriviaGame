@@ -192,9 +192,21 @@ h4 {
     margin-bottom: 10px;
 }
 
-@media screen and (max-width: 624px) {
+@media screen and (max-width: 870px) {
     h2 {
-        font-size: 30px;
+        font-size: 29px;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    h1 {
+        font-size: 63px;
+    }
+}
+
+@media screen and (max-width: 624px) {
+    h1 {
+        font-size: 55px;
     }
     h3 {
         font-size: 23px;
@@ -253,14 +265,20 @@ h4 {
 }
 
 @media screen and (max-width: 480px) {
+    h1 {
+        font-size: 47px;
+    }
     h4 {
         font-size: 17px;
     }
 }
 
-@media screen and (max-width: 468px) {
+@media screen and (max-width: 475px) {
+    h1 {
+        font-size: 40px;
+    }
     .button {
-        margin: 26px auto 0;
+        margin: 18px auto 0;
         padding: 11px 12px;
         font-size: 17px;
     }

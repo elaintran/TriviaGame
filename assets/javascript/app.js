@@ -47,8 +47,8 @@ var questionList = [
         funFact: "It is said that Japanese people slurp because it is considered evidence of enjoying the meal and it enhances the flavor."
     }, {
         question: "Tarte Tatin, a classic French dessert, is typically made with what fruit?",
-        choices: ["Pears", "Apricot", "Apples", "Peach"],
-        answer: "Apples",
+        choices: ["Pear", "Apricot", "Apple", "Peach"],
+        answer: "Apple",
         funFact: "The tarte Tatin is a pastry in which the fruit (usually apples) are caramelized in butter and sugar before the tart is baked."
     }, {
         question: "What is the world's most expensive spice native to Southwest Asia?",
@@ -56,8 +56,8 @@ var questionList = [
         answer: "Saffron",
         funFact: "Saffron, the dried stigmas of the flower Crocus sativus- and the world's most expensive spice- colors food a golden color."
     }, {
-        question: "What fruit is a mandatory for monfongo, Puerto Rico's signature dish?",
-        choices: ["Coconut", "Plantain", "Apricot", "Honeydew"],
+        question: "What fruit is mandatory for monfongo, Puerto Rico's signature dish?",
+        choices: ["Coconut", "Plantain", "Plum", "Mango"],
         answer: "Plantain",
         funFact: "Puerto Ricans use a mixture of mash plantains, garlic, and pork crackings to create the crunchy, savory dish called monfogo."
     }, {
