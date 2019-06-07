@@ -23,16 +23,35 @@ h4 {
 }
 
 .start {
-    text-transform: uppercase;
-    font-weight: bold;
     color: #fdca35;
     text-align: center;
+    position: relative;
+    padding: 35px 57px 40px;
+    border: 3px solid white;
 }
 
-.start h1:first-child {
-    font-weight: 500;
-    margin-bottom: 5px;
+.title-top {
+    margin-bottom: 9px;
     color: white;
+    font-size: 53px;
+    letter-spacing: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.title-bottom {
+    font-family: "Satisfy", sans-serif;
+    font-size: 79px;
+    line-height: 1.2;
+    font-weight: 600;
+}
+
+.start-button {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -25px;
+    background-color: #252c4a;
 }
 
 .button {
@@ -164,6 +183,7 @@ h4 {
 
 .congrats h2 {
     margin: 24px;
+    font-size: 37px;
 }
 
 .final-results {
@@ -199,8 +219,14 @@ h4 {
 }
 
 @media screen and (max-width: 710px) {
-    h1 {
-        font-size: 63px;
+    .start {
+        padding: 30px 50px 35px;
+    }
+    .title-top {
+        font-size: 48px;
+    }
+    .title-bottom {
+        font-size: 74px;
     }
 }
 
@@ -237,6 +263,16 @@ h4 {
 }
 
 @media screen and (max-width: 580px) {
+    .start {
+        padding: 25px 45px 35px;
+    }
+    .title-top {
+        margin-bottom: 8px;
+        font-size: 43px;
+    }
+    .title-bottom {
+        font-size: 69px;
+    }
     h3 {
         font-size: 22px;
     }
@@ -259,23 +295,36 @@ h4 {
 }
 
 @media screen and (max-width: 526px) {
+    .start {
+        padding: 20px 33px 26px;
+    }
+    .title-top {
+        margin-bottom: 4px;
+        font-size: 38px;
+    }
+    .title-bottom {
+        font-size: 64px;
+    }
     h2 {
         font-size: 23px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 47px;
-    }
     h4 {
         font-size: 17px;
     }
 }
 
 @media screen and (max-width: 475px) {
-    h1 {
-        font-size: 40px;
+    .start {
+        padding: 20px 15px 26px;
+    }
+    .title-top {
+        font-size: 36px;
+    }
+    .title-bottom {
+        font-size: 48px;
     }
     .button {
         margin: 18px auto 0;
@@ -288,5 +337,9 @@ h4 {
     }
     .answer-card i {
         top: 13px;
+    }
+    .congrats h2 {
+        margin: 22px;
+        font-size: 34px;
     }
 }
