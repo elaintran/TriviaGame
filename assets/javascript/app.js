@@ -164,6 +164,21 @@ $(document).ready(function() {
         $(".answer-container").append(funFactElement);
     }
 
+    function checkUnanswered() {
+        //unanswered counter
+        unanswered++;
+        //prevents from clicking answer choices
+        answerClicked = true;
+        //change clock icon to bell
+        $(".timer").children("i").addClass(bell).removeClass(clock);
+        //display time's up
+        $(".time").text("Time's Up!");
+        //shows correct answer
+        searchCorrect();
+        //shows fun fact
+        createFunFact();
+    }
+
     //set up and move on to next question or result
     function advance() {
         //add 1 to index to set up for next question
@@ -224,23 +239,11 @@ $(document).ready(function() {
         if (time <= 0) {
             //stop timer
             stopCountdown();
-            unanswered();
+            //update time's up display
+            checkUnanswered();
             //delay to see answer and move onto next question
             setTimeout(advance, 5000);
         }
-    }
-
-    function unanswered() {
-        //unanswered counter
-        unanswered++;
-        //change clock icon to bell
-        $(".timer").children("i").addClass(bell).removeClass(clock);
-        //display time's up
-        $(".time").text("Time's Up!");
-        //shows correct answer
-        searchCorrect();
-        //shows fun fact
-        createFunFact();
     }
 
     function startCountdown() {
