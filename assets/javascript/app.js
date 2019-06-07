@@ -79,7 +79,7 @@ var questionList = [
 ]
 
 $(document).ready(function() {
-    //need to create the start button
+    //start trivia
     $(".start-button").on("click", function() {
         $(".start").hide();
         $(".quiz-content").show();
@@ -106,9 +106,8 @@ $(document).ready(function() {
         //reset countdown
         resetCountdown();
         //start interval function
-        startCountdown();
+        //startCountdown();
     }
-    //createTrivia();
 
     //click on answer
     $(".answer-container").on("click", ".answer-card", function() {
@@ -150,7 +149,9 @@ $(document).ready(function() {
     //search through all divs to find correct answer and show correct answer
     function searchCorrect() {
         $("div").each(function() {
+            //if div text = answer
             if ($(this).text() === questionList[index].answer) {
+                //show correct answer display
                 $(this).addClass("correct").append(correctIcon);
             }
         })
@@ -190,11 +191,11 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            setTimeout(createTrivia, 5000);
+            setTimeout(createTrivia, 1000);
         //completed trivia
         } else {
             //delay to see answer and then display result screen
-            setTimeout(result, 5000);
+            setTimeout(result, 1000);
         }
     }
 
