@@ -212,6 +212,12 @@ h4 {
     margin-bottom: 10px;
 }
 
+@media screen and (max-height: 520px) {
+    .quiz-container {
+        padding: 15% 0;
+    }
+}
+
 @media screen and (max-width: 870px) {
     h2 {
         font-size: 29px;
