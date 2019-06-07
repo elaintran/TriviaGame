@@ -13,6 +13,7 @@ var correctIcon = "<i class='fas fa-check-circle'></i>";
 var incorrectIcon = "<i class='fas fa-times-circle'></i>";
 var awardIcon = "<i class='fas fa-trophy'></i>";
 //variables for results
+var finalResults;
 var correctContainer;
 var incorrectContainer;
 var unansweredContainer;
@@ -173,25 +174,29 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            setTimeout(createTrivia, 5000);
+            setTimeout(createTrivia, 1000);
         //completed trivia
         } else {
             //delay to see answer and then display result screen
-            setTimeout(result, 5000);
+            setTimeout(result, 1000);
         }
     }
 
     //show result screen
     function result() {
         $(".quiz-content").hide();
-        $(".results").show();
+        $(".result").show();
+        $(".result").empty();
+        finalResults = $("<div>").addClass("final-results");
         var congrats = "<h2>Congratulations!</h2>";
         var congratsElement = $("<div>").addClass("congrats").append(awardIcon).append(congrats);
-        $(".result").prepend(congratsElement);
         resultElements(correctContainer, "total-correct", correct, "Correct", totalCorrect);
         resultElements(incorrectContainer, "total-incorrect", incorrect, "Incorrect", totalIncorrect);
         resultElements(unansweredContainer, "total-unanswered", unanswered, "Unanswered", totalUnanswered);
+        var restart = $("<div>").addClass("restart-button button").text("Restart");
+        $(".result").append(congratsElement).append(finalResults).append(restart);
     }
+    //$(".start").hide();
     //result();
 
     //created element constructor for results
@@ -199,7 +204,7 @@ $(document).ready(function() {
         //show numbers for correct, incorrect, and unanswered
         element = $("<div>").addClass(resultClass).append("<h2>" + resultNumber + "</h2><h4>" + resultTitle + "</h4>");
         newElement = $("<div>").addClass("total").append(element);
-        $(".final-results").append(newElement);
+        $(finalResults).append(newElement);
     }
 
     function setTimer() {
@@ -222,7 +227,7 @@ $(document).ready(function() {
             //shows fun fact
             createFunFact();
             //delay to see answer and move onto next question
-            setTimeout(advance, 5000);
+            setTimeout(advance, 1000);
         }
         //update timer display
         $(".time").text(timeDisplay);
@@ -244,4 +249,19 @@ $(document).ready(function() {
         //change back to original text
         $(".time").text("00:25");
     }
+
+    function restart() {
+        index = 0;
+        questionNumber = 1;
+        correct = 0;
+        incorrect = 0;
+        unanswered = 0;
+        $(".quiz-content").show();
+        $(".result").hide();
+        createTrivia();
+    }
+
+    $(".result").on("click", ".restart-button", function() {
+        restart();
+    })
 })
