@@ -243,7 +243,7 @@ $(document).ready(function() {
             //update time's up display
             checkUnanswered();
             //delay to see answer and move onto next question
-            setTimeout(advance, 5000);
+            advance();
         }
     }
 

@@ -231,9 +231,6 @@ h4 {
 }
 
 @media screen and (max-width: 624px) {
-    h1 {
-        font-size: 55px;
-    }
     h3 {
         font-size: 23px;
     }
@@ -263,6 +260,15 @@ h4 {
 }
 
 @media screen and (max-width: 580px) {
+    h3 {
+        font-size: 22px;
+    }
+    h2 {
+        font-size: 27px;
+    }
+    h4 {
+        font-size: 18px;
+    }
     .start {
         padding: 25px 45px 35px;
     }
@@ -272,15 +278,6 @@ h4 {
     }
     .title-bottom {
         font-size: 69px;
-    }
-    h3 {
-        font-size: 22px;
-    }
-    h2 {
-        font-size: 27px;
-    }
-    h4 {
-        font-size: 18px;
     }
     .answer-card {
         padding: 26px 0px;
@@ -295,6 +292,9 @@ h4 {
 }
 
 @media screen and (max-width: 526px) {
+    h2 {
+        font-size: 23px;
+    }
     .start {
         padding: 20px 33px 26px;
     }
@@ -304,9 +304,6 @@ h4 {
     }
     .title-bottom {
         font-size: 64px;
-    }
-    h2 {
-        font-size: 23px;
     }
 }
 
