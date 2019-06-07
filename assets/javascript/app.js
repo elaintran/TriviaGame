@@ -12,6 +12,8 @@ var exclaimationIcon = "<i class='fas fa-exclamation-circle'></i>";
 var correctIcon = "<i class='fas fa-check-circle'></i>";
 var incorrectIcon = "<i class='fas fa-times-circle'></i>";
 var awardIcon = "<i class='fas fa-trophy'></i>";
+var bell = "fas fa-bell";
+var clock = "far fa-clock";
 //variables for results
 var finalResults;
 var correctContainer;
@@ -155,7 +157,6 @@ $(document).ready(function() {
     }
     
     function createFunFact() {
-        //$(".fun-fact").remove();
         var funFact = "<p>" + questionList[index].funFact + "</p>";
         //create fun fact element first since checkAnswer() adds an index
         var funFactElement = $("<div>").addClass("fun-fact").append(exclaimationIcon).append(funFact);
@@ -174,30 +175,31 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            setTimeout(createTrivia, 1000);
+            setTimeout(createTrivia, 5000);
         //completed trivia
         } else {
             //delay to see answer and then display result screen
-            setTimeout(result, 1000);
+            setTimeout(result, 5000);
         }
     }
 
-    //show result screen
     function result() {
+        //show result screen
         $(".quiz-content").hide();
         $(".result").show();
         $(".result").empty();
-        finalResults = $("<div>").addClass("final-results");
+        //congrats image
         var congrats = "<h2>Congratulations!</h2>";
         var congratsElement = $("<div>").addClass("congrats").append(awardIcon).append(congrats);
+        //new element to store results
+        finalResults = $("<div>").addClass("final-results");
         resultElements(correctContainer, "total-correct", correct, "Correct", totalCorrect);
         resultElements(incorrectContainer, "total-incorrect", incorrect, "Incorrect", totalIncorrect);
         resultElements(unansweredContainer, "total-unanswered", unanswered, "Unanswered", totalUnanswered);
+        //restart button
         var restart = $("<div>").addClass("restart-button button").text("Restart");
         $(".result").append(congratsElement).append(finalResults).append(restart);
     }
-    //$(".start").hide();
-    //result();
 
     //created element constructor for results
     function resultElements(element, resultClass, resultNumber, resultTitle, newElement) {
@@ -216,21 +218,29 @@ $(document).ready(function() {
             //timer display for 1 digit number
             timeDisplay = "00:0" + time;
         }
+        //update timer display
+        $(".time").text(timeDisplay);
         //timer reaches zero or less
         if (time <= 0) {
             //stop timer
             stopCountdown();
-            //unanswered counter
-            unanswered++;
-            //shows correct answer
-            searchCorrect();
-            //shows fun fact
-            createFunFact();
+            unanswered();
             //delay to see answer and move onto next question
-            setTimeout(advance, 1000);
+            setTimeout(advance, 5000);
         }
-        //update timer display
-        $(".time").text(timeDisplay);
+    }
+
+    function unanswered() {
+        //unanswered counter
+        unanswered++;
+        //change clock icon to bell
+        $(".timer").children("i").addClass(bell).removeClass(clock);
+        //display time's up
+        $(".time").text("Time's Up!");
+        //shows correct answer
+        searchCorrect();
+        //shows fun fact
+        createFunFact();
     }
 
     function startCountdown() {
@@ -246,21 +256,26 @@ $(document).ready(function() {
     function resetCountdown() {
         //timer reset
         time = 25;
+        //change bell back to clock
+        $(".timer").children("i").addClass(clock).removeClass(bell);
         //change back to original text
         $(".time").text("00:25");
     }
 
     function restart() {
+        //reset variables
         index = 0;
         questionNumber = 1;
         correct = 0;
         incorrect = 0;
         unanswered = 0;
+        //start quiz again
         $(".quiz-content").show();
         $(".result").hide();
         createTrivia();
     }
 
+    //restart quiz
     $(".result").on("click", ".restart-button", function() {
         restart();
     })
