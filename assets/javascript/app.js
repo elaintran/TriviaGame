@@ -36,30 +36,30 @@ var questionList = [
         answer: "Vietnam",
         funFact: "Vietnam produces the 2nd most coffee in the world at 1.98 billion lbs/year, whereas Brazil produces the most at 5.61 billion lbs/year."
     }, {
-        question: "Which month is National Grilled Cheese month?",
-        choices: ["January", "February", "March", "April"],
-        answer: "April",
-        funFact: "Each April, San Francisco holds a Grilled Cheese Invitational grilled cheese cooking contest to commemorate it."
+        question: "The world's largest fish market is what capital city?",
+        choices: ["Hanoi", "Tokyo", "Beijing", "Canberra"],
+        answer: "Tokyo",
+        funFact: "The Tsukiji market in Tokyo is the largest in the world, handling more than 2,000 tons of 450 types of seafood daily."
     }, {
         question: "What country is slurping not considered rude?",
         choices: ["Japan", "England", "India", "Austria"],
         answer: "Japan",
         funFact: "It is said that Japanese people slurp because it is considered evidence of enjoying the meal and it enhances the flavor."
     }, {
-        question: "What is the offical state fruit of Texas?",
-        choices: ["Plum", "Apricot", "Grapefruit", "Peach"],
-        answer: "Grapefruit",
-        funFact: "The Texas Red Grapefruit, first discovered by Texas citrus growers in 1929, was adopted as the Texas state fruit on May 17, 1993."
+        question: "Tarte Tatin, a classic French dessert, is typically made with what fruit?",
+        choices: ["Pears", "Apricot", "Apples", "Peach"],
+        answer: "Apples",
+        funFact: "The tarte Tatin is a pastry in which the fruit (usually apples) are caramelized in butter and sugar before the tart is baked."
     }, {
-        question: "Which one of these food ingredients will never spoil?",
-        choices: ["Basil", "Cumin", "Paprika", "Honey"],
-        answer: "Honey",
-        funFact: "Due to its relatively-low levels of moisture and high levels of acidity, bacteria and microorganisms have a hard time making a permanent home out of honey."
+        question: "What is the world's most expensive spice native to Southwest Asia?",
+        choices: ["Vanilla", "Anise", "Paprika", "Saffron"],
+        answer: "Saffron",
+        funFact: "Saffron, the dried stigmas of the flower Crocus sativus- and the world's most expensive spice- colors food a golden color."
     }, {
-        question: "In what year was the McDonald's Happy Meal created?",
-        choices: ["1968", "1977", "1980", "1995"],
-        answer: "1977",
-        funFact: "The Happy Meal, designed specifically for children, was originally fielded in 1977 and ultimately released nationwide in 1979."
+        question: "What fruit is a mandatory for monfongo, Puerto Rico's signature dish?",
+        choices: ["Coconut", "Plantain", "Apricot", "Honeydew"],
+        answer: "Plantain",
+        funFact: "Puerto Ricans use a mixture of mash plantains, garlic, and pork crackings to create the crunchy, savory dish called monfogo."
     }, {
         question: "What type of pasta is shaped like bow ties?",
         choices: ["Farfalle", "Conchiglie", "Gnocchi", "Penne"],
@@ -71,10 +71,10 @@ var questionList = [
         answer: "Portugal",
         funFact: "Hong Kong received the pastel de nata egg tart from Macau, which was a colony of Portugal, and combined aspects of the Portuguese tart with their own."
     }, {
-        question: "Which European country is credited for the invention of hot dogs?",
-        choices: ["Italy", "England", "Denmark", "Germany"],
-        answer: "Germany",
-        funFact: ""
+        question: "What country leads in turkey consumption per person?",
+        choices: ["Slovakia", "USA", "Finland", "Israel"],
+        answer: "Israel",
+        funFact: "As of 2005, Israel led the world in turkey consumption per person, with the small country consuming just over 34 pounds per year."
     }
 ]
 
@@ -106,7 +106,7 @@ $(document).ready(function() {
         //reset countdown
         resetCountdown();
         //start interval function
-        //startCountdown();
+        startCountdown();
     }
 
     //click on answer
@@ -191,11 +191,11 @@ $(document).ready(function() {
             //next question number
             questionNumber++;
             //delay to see answer and advance to new question
-            setTimeout(createTrivia, 1000);
+            setTimeout(createTrivia, 5000);
         //completed trivia
         } else {
             //delay to see answer and then display result screen
-            setTimeout(result, 1000);
+            setTimeout(result, 5000);
         }
     }
 
