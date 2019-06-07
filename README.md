@@ -1,9 +1,8 @@
 # Trivia Game - Discover World Cuisine
-The RPG Game is an interactive jQuery combat simulator inspired by <a href="https://en.wikipedia.org/wiki/Tetris" target="_blank">Tetris</a> and retro turn-based role playing games. Users are prompted to pick a <a href="https://en.wikipedia.org/wiki/Tetromino" target="_blank">tetrimino</a> and defeat the rest of the opposing enemies. Game can be found <a href="https://elaintran.github.io/unit-4-game/">here</a>.
+Discover World Cuisine is a timer-based trivia game revolving around culture of food. Questions are revealed as correct or incorrect as soon as they are answered and a fun fact is shown at the bottom to expand on the answer. Points are tallied up at the end and users are prompted to try again. Game can be found <a href="https://elaintran.github.io/TriviaGame/">here</a>.
 
 ### USER STORIES
-One of UT Austin Coding Bootcamp’s jQuery assignments is to build a RPG game with the following user stories:
-* I can select a character and an opponent.
-* I can press attack and see the HP value for both the player and opponent being lowered each time.
-* I can remove an enemy from the screen once they are defeated.
-* I can win by defeating all of the enemies.
+One of UT Austin Coding Bootcamp’s JavaScript assignments is to build a trivia game with the following user stories:
+* I can select an answer and move onto the next question without user input.
+* I can see a screen with the correct or incorrect answer depending on my choice.
+* I can restart the game without refreshing the page.
