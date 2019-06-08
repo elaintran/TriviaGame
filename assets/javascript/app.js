@@ -56,10 +56,10 @@ var questionList = [
         answer: "Saffron",
         funFact: "Saffron, the dried stigmas of the flower Crocus sativus- and the world's most expensive spice- colors food a golden color."
     }, {
-        question: "What fruit is mandatory for monfongo, Puerto Rico's signature dish?",
+        question: "What fruit is mandatory for mofongo, Puerto Rico's signature dish?",
         choices: ["Coconut", "Plantain", "Plum", "Mango"],
         answer: "Plantain",
-        funFact: "Puerto Ricans use a mixture of mash plantains, garlic, and pork crackings to create the crunchy, savory dish called monfogo."
+        funFact: "Puerto Ricans use a mixture of mash plantains, garlic, and pork crackings to create the crunchy, savory dish called mofongo."
     }, {
         question: "What type of pasta is shaped like bow ties?",
         choices: ["Farfalle", "Conchiglie", "Gnocchi", "Penne"],
